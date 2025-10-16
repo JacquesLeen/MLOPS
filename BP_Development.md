@@ -42,3 +42,37 @@ lint:
 all: install format lint test
 	@echo "All tasks completed successfully."
 ```
+
+In the makefile there is a mention of the install section. This allows us to have a single file ```requirements.txt``` that contains all the packages and dependencies that are necessary to run the project. If I now run
+
+```bash
+make install
+```
+I can install whatever is contained in my ```requirements.txt```.
+
+Seemingly if I have a piece of code in my file named ```hello.py```
+
+```python
+def more_hello()
+    return 'hi'
+```
+and I want to test it I can run the test easily by writing it of course
+```python
+from hello import more_hello
+
+def test_more_hello():
+    assert more_hello()=='hi'
+```
+
+and just leverage what i did in the makefile, rather than writing the command test everytime
+
+```bash
+make test
+```
+
+One more note concerning how we write the ```requirements.txt``` file. It might be useful to run
+
+```bash
+pip freeze | less
+```
+to take a look at the specific version of the packages that we install, so that we can force installation of individual release of packages
